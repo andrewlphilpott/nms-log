@@ -2,14 +2,16 @@
   General
 -------------------------------------------*/
 html {
-  position: relative;
+  height: 100%;
 }
 body {
   background: $black;
   @extend %antialias;
   color: $green;
   font-family: $body-font;
+  min-height: 100%;
   padding: rem(30) $body-pad;
+  position: relative;
   text-shadow: 0 0 3px $green;
 
   &:after {
