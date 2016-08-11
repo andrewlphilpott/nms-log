@@ -6,7 +6,7 @@ body {
   &:before {
     animation: fuzz 5s linear infinite;
     background: transparentize($white, .85);
-    bottom: 0;
+    top: 0;
     content: '';
     height: 7px;
     left: 0;
@@ -24,9 +24,9 @@ body {
 
 @keyframes fuzz {
   from {
-    transform: translateY(1000px);
+    transform: translateY(200vh);
   } to {
-    transform: translateY(-1000px);
+    transform: translateY(-100vh);
   }
 }
 
