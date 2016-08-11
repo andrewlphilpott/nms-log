@@ -1,0 +1,43 @@
+/*-------------------------------------------
+  Breakpoints
+-------------------------------------------*/
+$desktop: em(1024);
+$tablet: em(768);
+$mobile: em(480);
+
+/*-------------------------------------------
+  Colors
+-------------------------------------------*/
+// Grayscale
+$black: #000;
+$gray: #999;
+$gray-lt: lighten($gray, 30%);
+$white: #fff;
+
+// Color Palette
+$teal: #5bc3ba;
+$green: #3eff91;
+$orange: #f76860;
+$purple: #993a58;
+
+// Accent Colors
+$accent1: $green;
+$accent2: $orange;
+
+// Text Colors
+$text: transparentize($black, .25);
+
+/*-------------------------------------------
+  Typefaces
+-------------------------------------------*/
+$body-font: 'Ubuntu Mono';
+
+/*-------------------------------------------
+  Lengths
+-------------------------------------------*/
+$body-max-width: 43.75rem; // 700px
+$wrap-max-width: 36.25rem; // 580px
+$body-pad: 20px;
+$body-pad-negative: -20px;
+$body-pad-lg: 60px;
+$body-pad-lg-negative: -60px;

@@ -1,0 +1,22 @@
+{
+  "name": "nms-log",
+  "version": "1.0.0",
+  "description": "Log for my No Man’s Sky Journey",
+  "author": "Pek Jorkins",
+  "devDependencies": {
+  	"gulp": "latest",
+    "gulp-autoprefixer": "latest",
+    "browser-sync": "^2.9.0",
+  	"gulp-copy": "latest",
+    "gulp-concat": "^2.6.0",
+    "gulp-imagemin": "latest",
+    "gulp-notify": "latest",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.2.0",
+    "gulp-sourcemaps": "latest",
+    "gulp-twig": "latest",
+    "gulp-uglify": "^1.5.3",
+    "gulp-watch": "latest",
+    "jshint": "^2.9.1"
+  }
+}

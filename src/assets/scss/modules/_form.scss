@@ -1,0 +1,101 @@
+/*-------------------------------------------
+  Form Styles
+-------------------------------------------*/
+// Field layout
+.fields {
+  @extend %list-reset;
+
+  > li {
+    position: relative;
+  }
+}
+
+// Faux Caret
+.caret {
+  height: 1em;
+  margin-top: -2px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+
+  &:before {
+    content: attr(data-value);
+    opacity: 0;
+  }
+  &:after {
+    background: $green;
+    content: '';
+    display: inline-block;
+    height: 100%;
+    pointer-events: none;
+    width: 1ch;
+  }
+}
+
+// Console form
+.console {
+  background: $black;
+  border-top: 1px solid $green;
+  bottom: 0;
+  left: 0;
+  padding: 0 $body-pad;
+  position: fixed;
+  width: 100%;
+
+  .console-uname,
+  .console-pass {
+    display: none;
+  }
+  &.login-uname {
+    .console-uname {
+      display: block;
+    }
+    .console-bash,
+    .console-pass {
+      display: none;
+    }
+  }
+  &.login-pass {
+    .console-pass {
+      display: block;
+    }
+    .console-bash,
+    .console-uname {
+      display: none;
+    }
+  }
+
+  @include min-up($tablet) {
+    padding: 0 $body-pad-lg;
+  }
+}
+.console_lbl {
+  width: 5.555555556em; // 100px
+}
+.console_inp {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: calc(100% - 5.555555556em); // 100% - 100px
+
+  &:not([type=radio]):not([type=checkbox]) {
+    background: none;
+    color: $green;
+    @extend %h4; // font-size: rem(18)
+    text-shadow: 0 0 3px $green;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  } 49.9% {
+    opacity: 1;
+  } 50% {
+    opacity: 0;
+  } 99.9% {
+    opacity: 0;
+  } 100% {
+    opacity: 1;
+  }
+}

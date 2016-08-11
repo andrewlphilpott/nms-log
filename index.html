@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Journey Log: Pek Jorkins</title>
+
+		<link rel="stylesheet" type="text/css" href="/assets/css/screen.css" media="screen" />
+
+		<!-- Google Fonts -->
+		<link href='https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+
+		<link href="/assets/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	</head>
+
+	<body id="home" data-page="home">
+
+		
+		<div class="wrap">
+			<div class="init">
+  <strong>Initializing…</strong>
+  <div class="init_progress"><span></span></div>
+  <ul class="init_steps">
+    <li>Connecting to server…</li>
+    <li>Authenticating…</li>
+    <li>Retrieving data…</li>
+  </ul>
+</div>
+
+<main>
+  <h1 class="page-title"><span class="hdg">Journey Log: Pek Jorkins</span></h1>
+
+  <ol class="log"></ol><!-- /.log -->
+
+  <form class="console">
+    <ul class="fields">
+      <li class="console-bash">
+        <label class="caret" for="console-bash" data-for="console-bash"><span class="meta">Enter Command</span></label>
+        <input type="text" name="bash" id="console-bash" class="console_inp" maxlength="50" autofocus />
+      </li>
+      <li class="console-uname">
+        <label class="console_lbl" for="console-uname">Email:</label>
+        <span class="caret" data-for="console-uname"></span>
+        <input type="text" name="uname" id="console-uname" class="console_inp" maxlength="50" />
+      </li>
+      <li class="console-pass">
+        <label class="console_lbl" for="console-pass">Password:</label>
+        <span class="caret" data-for="console-pass"></span>
+        <input type="password" name="uname" id="console-pass" class="console_inp" maxlength="50" />
+      </li>
+    </ul>
+  </form><!-- /.console -->
+</main>
+		</div>
+
+		<script src="https://www.gstatic.com/firebasejs/3.2.1/firebase.js"></script>
+<script type="text/javascript" src="/assets/js/main.min.js"></script>
+
+	</body>
+</html>

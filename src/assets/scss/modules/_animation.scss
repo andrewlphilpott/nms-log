@@ -1,0 +1,122 @@
+/*-------------------------------------------
+  Animation Styles
+-------------------------------------------*/
+// Background Fuzz
+body {
+  &:before {
+    animation: fuzz 5s linear infinite;
+    background: transparentize($white, .85);
+    bottom: 0;
+    content: '';
+    height: 7px;
+    left: 0;
+    position: fixed;
+    width: calc(100% - 5px);
+    z-index: -1;
+  }
+  // &:after {
+  //   animation: fuzz 6s 1.25s linear infinite;
+  //   height: 3px;
+  //   left: 5px;
+  //   top: 200px;
+  // }
+}
+
+@keyframes fuzz {
+  from {
+    transform: translateY(1000px);
+  } to {
+    transform: translateY(-1000px);
+  }
+}
+
+
+// Text Glitch
+%glitch {
+  position: relative;
+
+  &:before,
+  &:after {
+    content: attr(data-copy);
+    overflow: hidden;
+    position: absolute;
+    text-shadow: none;
+    width: 100%;
+
+    .no-glitch & {
+      display: none;
+    }
+  }
+}
+
+.hdg {
+  @extend %glitch;
+  display: inline-block;
+  line-height: 1;
+
+  &:before,
+  &:after {
+    height: 50%;
+    line-height: 1;
+  }
+  &:before {
+    animation: glitch-stamp .5s linear infinite;
+    left: 2px;
+  }
+  &:after {
+    bottom: 0;
+    animation: glitch-stamp .75s .125s linear infinite;
+    left: -2px;
+    line-height: 0;
+    top: auto;
+  }
+}
+
+.body p,
+.body ol,
+.body ul {
+  @extend %glitch;
+
+  &:before {
+    animation: glitch-body .5s linear infinite;
+    left: -1px;
+    top: 1px;
+  }
+  &:after {
+    animation: glitch-body .75s .25s linear infinite;
+    left: 1px;
+    top: 2px;
+  }
+}
+
+@keyframes glitch-stamp {
+  0% {
+    opacity: 0;
+  } 20% {
+    opacity: 1;
+  } 30% {
+    opacity: 0;
+  } 60% {
+    opacity: 1;
+  } 65% {
+    opacity: 0;
+  } 100% {
+    opacity: 1;
+  }
+}
+
+@keyframes glitch-body {
+  0% {
+    opacity: 0;
+  } 20% {
+    opacity: .35;
+  } 30% {
+    opacity: 0;
+  } 60% {
+    opacity: .35;
+  } 65% {
+    opacity: 0;
+  } 100% {
+    opacity: .35;
+  }
+}

@@ -1,0 +1,134 @@
+/*-------------------------------------------
+  Global Typography
+-------------------------------------------*/
+// Antialiased font smoothing
+%antialias {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+%subpixel-antialias {
+	-webkit-font-smoothing: subpixel-antialiased;
+	-moz-osx-font-smoothing: auto;
+}
+%auto-antialias {
+	-webkit-font-smoothing: auto;
+	-moz-osx-font-smoothing: auto;
+}
+
+// Font Size Placeholders (to be extended for reusable font sizes)
+%h0 {font-size: rem(36)}
+%h1 {font-size: rem(24)}
+%h2 {font-size: rem(24)}
+%h3 {font-size: rem(20)}
+%h4 {font-size: rem(18)}
+%sm {font-size: rem(16)}
+%xs {font-size: rem(14)}
+
+@include min-up($tablet) {
+	%h0 {font-size: rem(100)}
+	%h1 {font-size: rem(42)}
+	%h2 {font-size: rem(32)}
+	%h3 {font-size: rem(24)}
+}
+
+// Font Sizes/Line Heights
+h1 {
+	@extend %h1; //font-size: rem(42)
+	line-height: 1.6; // ~ 67
+}
+h2 {
+	@extend %h2; //font-size: rem(32)
+	line-height: 1.6; // ~ 51
+}
+h3 {
+	@extend %h3; //font-size: rem(24)
+	line-height: 1.6; // ~ 38
+}
+h4, p, ol, ul, pre {
+	@extend %h4; //font-size: rem(18)
+	line-height: 1.5; // 27
+}
+
+// Font Styles
+em {
+	font-style: italic;
+}
+strong {
+	font-weight: 700
+}
+.page-title {
+	background: transparentize($black, .2);
+	border: 1px solid $green;
+	border-left-width: 0;
+	color: $green;
+	font-weight: 700;
+	letter-spacing: -.05em;
+	margin: 0 0 1em $body-pad-negative;
+	max-width: $body-max-width;
+	padding-left: $body-pad;
+	position: relative;
+  text-transform: uppercase;
+	text-shadow: none;
+	z-index: 1;
+
+	&:after {
+		background: $black;
+		border-left: 1px solid $green;
+		bottom: -3px;
+		content: '';
+		height: 10px;
+		position: absolute;
+		right: -11px;
+		transform: rotate(45deg);
+		transform-origin: left top;
+		width: 10px;
+	}
+
+	.inverse & {
+		background: $white;
+
+		&:after {
+			background: $white;
+		}
+	}
+
+	@include min-up($tablet) {
+		letter-spacing: -.025em;
+		margin: 0 $body-pad-lg-negative 1em;
+		padding-left: $body-pad-lg;
+
+		&:after {
+			bottom: -9px;
+			height: 30px;
+			right: -31px;
+			width: 30px;
+		}
+	}
+}
+
+// Margins
+p, ol, ul, blockquote {
+	margin-bottom: 1.5em; // 27px
+}
+
+// Blockquotes
+blockquote {
+	font-style: italic;
+	margin-left: $body-pad;
+
+	@include min-up($tablet) {
+		margin-left: $body-pad-lg / 2;
+	}
+}
+
+// Meta Text
+.meta {
+	border: 0;
+	clip: rect(0, 0, 0, 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	width: 1px;
+}

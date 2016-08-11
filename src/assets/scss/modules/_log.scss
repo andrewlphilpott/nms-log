@@ -1,0 +1,19 @@
+/*-------------------------------------------
+  Log Styles
+-------------------------------------------*/
+.log {
+  @extend %list-reset;
+
+  > li {
+    + li {
+      &:before {
+        display: block;
+        content: '-----------------------------✴︎';
+        margin: 1em 0;
+        overflow: hidden;
+        white-space: nowrap;
+        width: 100%;
+      }
+    }
+  }
+}
