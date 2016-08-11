@@ -108,7 +108,7 @@ gulp.task('twig', function(){
     return gulp.src(paths.src.twig)
         .pipe(twig({
             data: {
-                assets: '/assets'
+                assets: 'assets'
             }
         }))
         .pipe(gulp.dest(paths.dest.templates))
