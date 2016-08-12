@@ -60,6 +60,16 @@ body {
     padding: rem(40) $body-pad-lg;
   }
 }
+
+// Disable pixel grid on Firefox (caused performance issues)
+@-moz-document url-prefix() {
+  body {
+    &:after {
+      display: none;
+    }
+  }
+}
+
 .wrap {
   max-width: $wrap-max-width;
 }

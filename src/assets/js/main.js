@@ -71,7 +71,7 @@ entries.once('value', function(snapshot){
 	for(i in entries) {
 		entryArr.push(entries[i]);
 	}
-	entryArr.sort().reverse();
+	entryArr.reverse();
 
 	for(i in entryArr) {
 		var date = entryArr[i].date;
