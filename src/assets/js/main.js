@@ -62,15 +62,23 @@ var config = {
 firebase.initializeApp(config);
 
 // Get entries
-var entries = firebase.database().ref('entries');
+var entries = firebase.database().ref('entries').orderByKey();
 entries.once('value', function(snapshot){
-	snapshot.forEach(function(childSnapshot) {
-		var data = childSnapshot.val();
-		var date = data.date;
-		var body = data.body;
+	// Create an array of entries and sort
+	var entries = snapshot.val();
+	var entryArr = [];
+
+	for(i in entries) {
+		entryArr.push(entries[i]);
+	}
+	entryArr.sort().reverse();
+
+	for(i in entryArr) {
+		var date = entryArr[i].date;
+		var body = entryArr[i].body;
 		var entryLog = document.querySelector('.log');
 		entryLog.innerHTML += '<li><article class="entry"><h2 class="entry_stamp"><time class="hdg" pubdate>☉ '+convertDate(date)+'</time></h2><div class="entry_body body">'+body+'</div></article></li>';
-	});
+	}
 
 	// Set data-copy attribute (used for text glitching)
 	var hdgArr = document.querySelectorAll('.hdg, .entry_body p, .entry_body li');
