@@ -34,14 +34,18 @@
 
 // Console form
 .console {
-display: none;
   background: $black;
   border-top: 1px solid $green;
   bottom: 0;
+  display: none;
   left: 0;
   padding: 0 $body-pad;
   position: fixed;
   width: 100%;
+
+  &.visible {
+    display: block;
+  }
 
   .console-uname,
   .console-pass {

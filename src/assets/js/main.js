@@ -28,10 +28,17 @@ for(i = 0; i < inputs.length; i++) {
 	});
 }
 
+// Interact with login form
 var consoleForm = document.querySelector('.console');
 var bash = document.querySelector('#console-bash');
 var uname = document.querySelector('#console-uname');
 var pass = document.querySelector('#console-pass');
+
+document.addEventListener('keydown', function(e){
+	if(e.keyCode == 27 && e.ctrlKey) {
+		consoleForm.className += ' visible';
+	}
+});
 
 bash.addEventListener('keydown', function(e){
 	if(e.keyCode == '13') {
