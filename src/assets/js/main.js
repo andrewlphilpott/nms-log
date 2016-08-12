@@ -94,6 +94,27 @@ entries.once('value', function(snapshot){
 		var glitchCopy = hdgArr[i].innerHTML;
 		hdgArr[i].setAttribute('data-copy', glitchCopy)
 	}
+
+	// Wrap images (used for image glitching)
+	var imgs = document.querySelectorAll('.entry img');
+
+	for(var i = 0; i < imgs.length; i++) {
+		var imgWrap = document.createElement('span');
+		imgWrap.setAttribute('class', 'entry_img');
+
+		var imgSrc = imgs[i].getAttribute('src');
+		var before = document.createElement('img');
+		var after = document.createElement('img');
+		before.setAttribute('src', imgSrc)
+		before.setAttribute('class', 'img-before');
+		after.setAttribute('src', imgSrc)
+		after.setAttribute('class', 'img-after');
+
+		imgs[i].parentNode.insertBefore(imgWrap, imgs[i]);
+		imgWrap.appendChild(before);
+		imgWrap.appendChild(imgs[i]);
+		imgWrap.appendChild(after);
+	}
 });
 
 // Sign into Firebase

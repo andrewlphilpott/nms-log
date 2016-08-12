@@ -12,7 +12,9 @@
   }
   img {
     display: block;
+    height: auto;
     margin-bottom: 1.5em;
+    max-width: 100%;
   }
 }
 .entry_stamp {
@@ -21,4 +23,8 @@
   @include min-up($tablet) {
     margin-left: -1.5em;
   }
+}
+.entry_img {
+  display: inline-block;
+  position: relative;
 }
