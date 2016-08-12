@@ -1,6 +1,47 @@
 /*-------------------------------------------
   Form Styles
 -------------------------------------------*/
+input, textarea {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: calc(100% - 5.555555556em); // 100% - 100px
+
+  &:not([type=radio]):not([type=checkbox]) {
+    background: none;
+    color: $green;
+    @extend %h4; // font-size: rem(18)
+    text-shadow: 0 0 3px $green;
+  }
+}
+textarea {
+  border: 1px solid $green;
+  box-shadow: 0 0 3px 0 $green;
+  height: rem(200);
+  padding: rem(10);
+  width: 100%;
+}
+button {
+  background: $green;
+  border: 1px solid transparent;
+  border-top-width: 0;
+  box-shadow: 0 0 3px 0 $green;
+  display: block;
+  @extend %h4; // font-size: rem(18)
+  margin: 0;
+  padding: 9px;
+  text-align: center;
+  text-shadow: 0 0 3px transparentize($black, .5);
+  width: 100%;
+
+  &:active {
+    background: $black;
+    border-color: $green;
+    color: $green;
+    text-shadow: 0 0 3px $green;
+  }
+}
+
 // Field layout
 .fields {
   @extend %list-reset;
@@ -77,19 +118,6 @@
 .console_lbl {
   width: 5.555555556em; // 100px
 }
-.console_inp {
-  border: none;
-  margin: 0;
-  padding: 0;
-  width: calc(100% - 5.555555556em); // 100% - 100px
-
-  &:not([type=radio]):not([type=checkbox]) {
-    background: none;
-    color: $green;
-    @extend %h4; // font-size: rem(18)
-    text-shadow: 0 0 3px $green;
-  }
-}
 
 @keyframes blink {
   0% {
@@ -102,5 +130,15 @@
     opacity: 0;
   } 100% {
     opacity: 1;
+  }
+}
+
+// Submit form
+.submit {
+  display: none;
+  margin: rem(40) 0 0;
+
+  .logged-in & {
+    display: block;
   }
 }

@@ -22,10 +22,14 @@ function glitch() {
 var inputs = document.querySelectorAll('input');
 for(i = 0; i < inputs.length; i++) {
 	inputs[i].addEventListener('input', function(){
-		var val = this.value;
-		var lbl = document.querySelector('[data-for='+this.getAttribute('id')+']');
-		lbl.setAttribute('data-value', val);
+		caret(this);
 	});
+}
+
+function caret(input) {
+	var val = input.value;
+	var lbl = document.querySelector('[data-for='+input.getAttribute('id')+']');
+	lbl.setAttribute('data-value', val);
 }
 
 // Interact with login form
@@ -47,6 +51,14 @@ bash.addEventListener('keydown', function(e){
 		if(bashVal == 'login') {
 			consoleForm.className += ' login-uname';
 			uname.focus();
+		} else {
+			bash.value = 'Command not found';
+			caret(bash);
+
+			setTimeout(function(){
+				bash.value = '';
+				caret(bash);
+			}, 2000);
 		}
 	}
 });
@@ -70,7 +82,7 @@ firebase.initializeApp(config);
 
 // Get entries
 var entries = firebase.database().ref('entries').orderByKey();
-entries.once('value', function(snapshot){
+entries.on('value', function(snapshot){
 	// Create an array of entries and sort
 	var entries = snapshot.val();
 	var entryArr = [];
@@ -80,10 +92,17 @@ entries.once('value', function(snapshot){
 	}
 	entryArr.reverse();
 
+	// Empty log
+	var entryLog = document.querySelector('.log');
+
+	while(entryLog.hasChildNodes()) {
+		entryLog.removeChild(entryLog.lastChild);
+	}
+
+	// Append entries
 	for(i in entryArr) {
 		var date = entryArr[i].date;
 		var body = entryArr[i].body;
-		var entryLog = document.querySelector('.log');
 		entryLog.innerHTML += '<li><article class="entry"><h2 class="entry_stamp"><time class="hdg" pubdate>☉ '+convertDate(date)+'</time></h2><div class="entry_body body">'+body+'</div></article></li>';
 	}
 
@@ -117,6 +136,9 @@ entries.once('value', function(snapshot){
 	}
 });
 
+// Make sure user isn’t signed in on load
+firebase.auth().signOut();
+
 // Sign into Firebase
 pass.addEventListener('keydown', function(e){
 	if(e.keyCode == '13') {
@@ -128,10 +150,35 @@ pass.addEventListener('keydown', function(e){
 });
 
 firebase.auth().onAuthStateChanged(function(user) {
+	var body = document.querySelector('body');
+
   if (user) {
-    console.log(user)
-  }
+    body.className += ' logged-in';
+		consoleForm.classList.remove('visible');
+		document.querySelector('#entry-body').focus();
+  } else {
+		body.classList.remove('logged-in');
+	}
 });
+
+// Submit entries
+var submitForm = document.querySelector('.submit');
+submitForm.onsubmit = addEntry;
+
+function addEntry(e) {
+	e.preventDefault();
+
+	var entry = document.querySelector('#entry-body').value;
+	var date = Date.now();
+
+	firebase.database().ref('entries/' + date).set({
+		body: entry,
+		date: date
+	});
+
+	document.querySelector('#entry-body').value = '';
+	document.querySelector('#entry-body').focus();
+}
 
 // Convert timestamps to readable dates
 function convertDate(timestamp) {
