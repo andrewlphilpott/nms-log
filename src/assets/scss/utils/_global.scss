@@ -70,8 +70,21 @@ body {
   }
 }
 
+// Wrapper
 .wrap {
   max-width: $wrap-max-width;
+}
+
+// Text Selection
+::selection {
+	background: transparentize($green, .01);
+	color: $black;
+  text-shadow: 0 0 3px transparentize($black, .5);
+}
+::-moz-selection {
+	background: transparentize($green, .01);
+	color: $black;
+  text-shadow: 0 0 3px transparentize($black, .5);
 }
 
 /*-------------------------------------------
